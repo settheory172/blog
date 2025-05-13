@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background-color: #343a40;
+  background-color: #93c47d;
   color: white;
   padding: 20px 0;
   text-align: center;
@@ -44,7 +44,7 @@ article:hover {
 }
 
 footer {
-  background-color: #343a40;
+  background-color: #93c47d;
   color: white;
   text-align: center;
   padding: 10px 0;
