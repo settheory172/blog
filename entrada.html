@@ -8,7 +8,7 @@
 <body>
 
 <header>
-   <h1 id="titulo-header">Cargando título...</h1>
+  <h1 id="titulo-header">Cargando título...</h1>
   <nav>
     <a href="index.html">Volver al inicio</a>
   </nav>
@@ -16,7 +16,7 @@
 
 <main>
   <article id="entrada">
-    <!-- Aquí se cargará la entrada dinámica -->
+    <!-- Entrada individual -->
   </article>
 </main>
 
@@ -24,38 +24,24 @@
   <p>&copy; 2025 Mi Blog Personal</p>
 </footer>
 
+<script src="posts.js"></script>
 <script>
-  // Obtener el parámetro id desde la URL
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
 
-  fetch('https://raw.githubusercontent.com/settheory172/blog/refs/heads/master/posts.json')
-    .then(response => response.json())
-    .then(posts => {
-      if (isNaN(id) || id < 0 || id >= posts.length) {
-        document.getElementById('entrada').innerHTML = '<p>Entrada no encontrada.</p>';
-        return;
-      }
-	  
-	  const post = posts[id];
-
-      // Mostrar título en el header
-      document.getElementById('titulo-header').textContent = post.titulo;
-
-      // Mostrar contenido en el article
-      const contenedor = document.getElementById('entrada');
-	  contenedor.innerHTML = `
-        <h2>${post.titulo}</h2>
-        <img src="${post.imagen}" alt="${post.titulo}" style="max-width: 100%; height: auto;">
-        <p>${post.descripcion}</p>
-      `;
-    })
-    .catch(error => {
-      console.error('Error cargando posts.json:', error);
-      document.getElementById('entrada').innerHTML = '<p>Error al cargar la entrada.</p>';
-    });
+  if (!isNaN(id) && posts[id]) {
+    const post = posts[id];
+    document.getElementById('titulo-header').textContent = post.titulo;
+    const contenedor = document.getElementById('entrada');
+    contenedor.innerHTML = `
+      <h2>${post.titulo}</h2>
+      <img src="${post.imagen}" alt="${post.titulo}" style="max-width: 100%; height: auto;">
+      <p>${post.descripcion}</p>
+    `;
+  } else {
+    document.getElementById('entrada').innerHTML = '<p>Entrada no encontrada.</p>';
+  }
 </script>
 
 </body>
 </html>
-

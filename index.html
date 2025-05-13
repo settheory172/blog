@@ -8,53 +8,32 @@
 <body>
 
 <header>
-  <h1>Bienvenido a mi Blog</h1>
-  <nav>
-    <nav id="menu-dinamico">
-    <!-- Aquí se insertará el menú dinámico -->
-  </nav>
+  <h1>Mi Blog Personal</h1>
 </header>
 
-<main>
-  <section id="entradas">
-    <!-- Las entradas se insertarán aquí -->
-  </section>
+<main id="blog-container">
+  <!-- Las entradas se cargarán aquí -->
 </main>
 
 <footer>
   <p>&copy; 2025 Mi Blog Personal</p>
 </footer>
 
+<script src="posts.js"></script>
 <script>
-    // Menú
-  fetch('https://raw.githubusercontent.com/settheory172/blog/refs/heads/master/posts.json')
-    .then(r => r.json())
-    .then(posts => {
-      const nav = document.getElementById('menu-dinamico');
-      let html = '<a href="index.html">Inicio</a>';
-      posts.forEach((post, i) => {
-        html += ` | <a href="entrada.html?id=${i}">${post.titulo}</a>`;
-      });
-      nav.innerHTML = html;
+  const contenedor = document.getElementById('blog-container');
 
-      // Entradas
-      const contenedor = document.getElementById('entradas');
-      posts.forEach((post, i) => {
-        contenedor.innerHTML += `
-          <article>
-            <h2><a href="entrada.html?id=${i}">${post.titulo}</a></h2>
-            <img src="${post.imagen}" alt="${post.titulo}" style="max-width:100%">
-            <p>${post.descripcion}</p>
-          </article>
-        `;
-      });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      document.getElementById('entradas').innerHTML = '<p>Error al cargar entradas.</p>';
-    });
+  posts.forEach((post, index) => {
+    const entrada = document.createElement('article');
+    entrada.innerHTML = `
+      <h2>${post.titulo}</h2>
+      <img src="${post.imagen}" alt="${post.titulo}" style="max-width: 100%; height: auto;">
+      <p>${post.descripcion}</p>
+      <a href="entrada.html?id=${index}">Leer más</a>
+    `;
+    contenedor.appendChild(entrada);
+  });
 </script>
-
 
 </body>
 </html>
