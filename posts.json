@@ -1,17 +1,17 @@
 [
   {
-	"titulo": "🌄 Mi primera entrada",
-    "descripcion": "Una breve introducción sobre lo que trata el blog.",
+	"titulo": "🌄 DE lo que se trat este blog",
+    "descripcion": "Una breve introducción sobre mis intereses en ciencia, tecnología y los deportes.",
     "imagen": "img/science.avif"
   },
   {
     "titulo": "🚴‍♂️ Un paseo inolvidable",
-    "descripcion": "Mi experiencia recorriendo la ciudad en bicicleta.",
+    "descripcion": "Mi experiencia recorriendo la ciudad y sus alrededores en bicicleta.",
     "imagen": "img/ciclying.avif"
   },
   {
-    "titulo": "🍲 Receta de la abuela",
-    "descripcion": "Cómo preparar el guiso tradicional de la familia.",
+    "titulo": "🍲 Aprendiendo otro idioma",
+    "descripcion": "Cómo adentrarse en otra cultura aprendiendo otro idioma.",
     "imagen": "img/languages.jpg"
   }
 ]
