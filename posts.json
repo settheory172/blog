@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "🌄 De lo que trata este blog",
+    "descripcion": "Una breve introducción sobre mi persona y mis pasatiempos tales como aprender de ciencia, idiomas y realizar actividad física.",
+    "imagen": "/img/science.avif",
+    "url": "De lo que trata este blog.html"
+  },
+  {
+    "titulo": "🚴‍♂️ Un paseo en bicicleta",
+    "descripcion": "Mi experiencia recorriendo la ciudad y sus alrededores en bicicleta.",
+    "imagen": "/img/cycling.avif",
+    "url": "Un paseo en bicicleta.html"
+  },
+  {
+    "titulo": "🍳 Trucos para aprender un idioma rápidamente",
+    "descripcion": "Cómo crear una rutina diaria estando motivado y siendo consistente en el aprendizaje de cualquier idioma.",
+    "imagen": "/img/languages.jpg",
+    "url": "Trucos para aprender un idioma rápidamente.html"
+  }
+]

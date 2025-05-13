@@ -1,25 +1,60 @@
-<html>
-  <head>
-    <title>mi primer trabajo en html</title>
-  </head>
-  <body>
-    <!--esto es un comentario-->
-    <h1>Titulo principal</h1>
-    <h2>Subtitulo</h2>
-    <h3>Subsubtitulo</h3>
-    <p>Este es un pĂˇrrafo con texto en negrita: <b>las letras en negrita</b> y otro enfasis: <strong>otro enfasis</strong></p>
-    <br/>
-    <a href="https://www.google.com/?hl=es/">Ir a Google</a>
-    <br/>
-    <a target="_blank" href="https://www.google.com/?hl=es/">Ir a Google en una ventana nueva</a>
-    <br/>
-    <a target="_blank" href="https://raw.githubusercontent.com/settheory172/blog/master/gato.png">Ir a imagen</a>
-	<br/>
-	<br/>
-	<a target="_blank" href="https://raw.githubusercontent.com/settheory172/blog/master/tema1.pdf">Ir a documento</a>
-	<br/>
-	<img src="https://picsum.photos/200/300" alt="Placeholder Image">
-	<!--incluye un caption a la imagen-->
-	<p>Image credit: <a href="https://picsum.photos/">Lorem Picsum</a></p>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Blog Personal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Bienvenido a mi Blog</h1>
+  <nav>
+    <nav id="menu-dinamico">
+    <!-- Aquí se insertará el menú dinámico -->
+  </nav>
+</header>
+
+<main>
+  <section id="entradas">
+    <!-- Las entradas se insertarán aquí -->
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Mi Blog Personal</p>
+</footer>
+
+<script>
+    // Menú
+  fetch('posts.json')
+    .then(r => r.json())
+    .then(posts => {
+      const nav = document.getElementById('menu-dinamico');
+      let html = '<a href="index.html">Inicio</a>';
+      posts.forEach((post, i) => {
+        html += ` | <a href="entrada.html?id=${i}">${post.titulo}</a>`;
+      });
+      nav.innerHTML = html;
+
+      // Entradas
+      const contenedor = document.getElementById('entradas');
+      posts.forEach((post, i) => {
+        contenedor.innerHTML += `
+          <article>
+            <h2><a href="entrada.html?id=${i}">${post.titulo}</a></h2>
+            <img src="${post.imagen}" alt="${post.titulo}" style="max-width:100%">
+            <p>${post.descripcion}</p>
+          </article>
+        `;
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById('entradas').innerHTML = '<p>Error al cargar entradas.</p>';
+    });
+</script>
+
+
+</body>
 </html>
