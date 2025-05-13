@@ -12,27 +12,38 @@
 </header>
 
 <main id="blog-container">
-  <!-- Las entradas se cargarán aquí -->
+  <!-- Entradas dinámicas -->
 </main>
 
 <footer>
   <p>&copy; 2025 Mi Blog Personal</p>
 </footer>
 
-<script src="posts.js"></script>
 <script>
-  const contenedor = document.getElementById('blog-container');
+  const basePath = window.location.hostname.includes("github.io")
+  ? "/blog/"
+  : "/";
 
-  posts.forEach((post, index) => {
-    const entrada = document.createElement('article');
-    entrada.innerHTML = `
-      <h2>${post.titulo}</h2>
-      <img src="${post.imagen}" alt="${post.titulo}" style="max-width: 100%; height: auto;">
-      <p>${post.descripcion}</p>
-      <a href="entrada.html?id=${index}">Leer más</a>
-    `;
-    contenedor.appendChild(entrada);
-  });
+
+  fetch(basePath + "posts.json")
+    .then(res => res.json())
+    .then(posts => {
+      const contenedor = document.getElementById("blog-container");
+      posts.forEach((post, index) => {
+        const entrada = document.createElement("article");
+        entrada.innerHTML = `
+          <h2>${post.titulo}</h2>
+          <img src="${basePath}${post.imagen}" alt="${post.titulo}" style="max-width: 100%;">
+          <p>${post.descripcion}</p>
+          <a href="${basePath}entrada.html?id=${index}">Leer más</a>
+        `;
+        contenedor.appendChild(entrada);
+      });
+    })
+    .catch(err => {
+      console.error("Error cargando posts.json", err);
+      document.getElementById("blog-container").innerHTML = "<p>Error cargando entradas.</p>";
+    });
 </script>
 
 </body>

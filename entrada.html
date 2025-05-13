@@ -8,7 +8,7 @@
 <body>
 
 <header>
-  <h1 id="titulo-header">Cargando título...</h1>
+  <h1 id="titulo-header">Cargando...</h1>
   <nav>
     <a href="index.html">Volver al inicio</a>
   </nav>
@@ -24,23 +24,35 @@
   <p>&copy; 2025 Mi Blog Personal</p>
 </footer>
 
-<script src="posts.js"></script>
 <script>
+  const basePath = window.location.hostname.includes("github.io")
+  ? "/blog/"
+  : "/";
+
+
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
 
-  if (!isNaN(id) && posts[id]) {
-    const post = posts[id];
-    document.getElementById('titulo-header').textContent = post.titulo;
-    const contenedor = document.getElementById('entrada');
-    contenedor.innerHTML = `
-      <h2>${post.titulo}</h2>
-      <img src="${post.imagen}" alt="${post.titulo}" style="max-width: 100%; height: auto;">
-      <p>${post.descripcion}</p>
-    `;
-  } else {
-    document.getElementById('entrada').innerHTML = '<p>Entrada no encontrada.</p>';
-  }
+  fetch(basePath + "posts.json")
+    .then(res => res.json())
+    .then(posts => {
+      if (isNaN(id) || !posts[id]) {
+        document.getElementById("entrada").innerHTML = "<p>Entrada no encontrada.</p>";
+        return;
+      }
+
+      const post = posts[id];
+      document.getElementById("titulo-header").textContent = post.titulo;
+      document.getElementById("entrada").innerHTML = `
+        <h2>${post.titulo}</h2>
+        <img src="${basePath}${post.imagen}" alt="${post.titulo}" style="max-width: 100%;">
+        <p>${post.descripcion}</p>
+      `;
+    })
+    .catch(err => {
+      console.error("Error cargando entrada", err);
+      document.getElementById("entrada").innerHTML = "<p>Error al cargar la entrada.</p>";
+    });
 </script>
 
 </body>
