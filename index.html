@@ -27,7 +27,7 @@
 
 <script>
     // Menú
-  fetch('posts.json')
+  fetch('https://raw.githubusercontent.com/settheory172/blog/refs/heads/master/posts.json')
     .then(r => r.json())
     .then(posts => {
       const nav = document.getElementById('menu-dinamico');
