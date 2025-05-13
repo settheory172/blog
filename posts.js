@@ -1,0 +1,20 @@
+const posts = [
+  {
+    "titulo": "De lo que trata este blog",
+    "descripcion": "Una breve introducciÃ³n sobre mi persona y mis pasatiempos tales como aprender de ciencia, idiomas y realizar actividad fÃ­sica.",
+    "imagen": "https://raw.githubusercontent.com/settheory172/blog/master/img/science.avif",
+    "url": "De lo que trata este blog.html"
+  },
+  {
+    "titulo": "Un paseo en bicicleta",
+    "descripcion": "Mi experiencia recorriendo la ciudad y sus alrededores en bicicleta.",
+    "imagen": "https://raw.githubusercontent.com/settheory172/blog/master/img/cycling.avif",
+    "url": "Un paseo en bicicleta.html"
+  },
+  {
+    "titulo": "Trucos para aprender un idioma rÃ¡pidamente",
+    "descripcion": "CÃ³mo crear una rutina diaria estando motivado y siendo consistente en el aprendizaje de cualquier idioma.",
+    "imagen": "https://raw.githubusercontent.com/settheory172/blog/master/img/languages.jpg",
+    "url": "Trucos para aprender un idioma rÃ¡pidamente.html"
+  }
+];
