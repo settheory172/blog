@@ -1,6 +1,6 @@
 [
   {
-	"titulo": "🌄 De lo que se trat este blog",
+	"titulo": "🌄 De lo que se trata este blog",
     "descripcion": "Una breve introducción sobre mis intereses en ciencia, tecnología y los deportes.",
     "imagen": "img/science.avif"
   },
@@ -10,8 +10,8 @@
     "imagen": "img/cycling.avif"
   },
   {
-    "titulo": "🍲 Aprendiendo otro idioma",
-    "descripcion": "Cómo adentrarse en otra cultura aprendiendo otro idioma.",
+    "titulo": "🍲 Aprendiendo otro idioma y otra gastronomía",
+    "descripcion": "Cómo adentrarse en otra cultura aprendiendo otro idioma y de su gastronomía.",
     "imagen": "img/languages.jpg"
   }
 ]
